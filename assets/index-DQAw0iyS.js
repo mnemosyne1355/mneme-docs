@@ -95,7 +95,7 @@ ${Rc(p)}`),super(t.shortMessage,{cause:t,docsPath:r,metaMessages:[...t.metaMessa
         <p><strong>Phase 2 — public.</strong> Open to everyone until sold out.</p>
         <p>Sealed packs. Everyone reveals together after the mint closes. 70% of proceeds seed the prize draw pots.</p>
       </div>
-    `;return}}function r0(e=new Date){const t=new Date(Date.UTC(e.getUTCFullYear(),e.getUTCMonth(),e.getUTCDate(),V.drawHourUtc,0,0));let n=(V.drawWeekdayUtc-t.getUTCDay()+7)%7;return n===0&&t.getTime()<=e.getTime()&&(n=7),t.setUTCDate(t.getUTCDate()+n),t}function s0(e){const t=Math.max(0,Math.floor(e/1e3)),n=Math.floor(t/86400),r=Math.floor(t%86400/3600),s=Math.floor(t%3600/60),i=t%60,o=a=>String(a).padStart(2,"0");return`${n}d ${o(r)}h ${o(s)}m ${o(i)}s`}function o0(e){e.innerHTML=`
+    `;return}}function r0(e=new Date){const f=new Date(Date.UTC(2026,9,4,20,0,0));if(e.getTime()<f.getTime())return f;const t=new Date(Date.UTC(e.getUTCFullYear(),e.getUTCMonth(),e.getUTCDate(),V.drawHourUtc,0,0));let n=(V.drawWeekdayUtc-t.getUTCDay()+7)%7;return n===0&&t.getTime()<=e.getTime()&&(n=7),t.setUTCDate(t.getUTCDate()+n),t}function s0(e){const t=Math.max(0,Math.floor(e/1e3)),n=Math.floor(t/86400),r=Math.floor(t%86400/3600),s=Math.floor(t%3600/60),i=t%60,o=a=>String(a).padStart(2,"0");return`${n}d ${o(r)}h ${o(s)}m ${o(i)}s`}function o0(e){e.innerHTML=`
     <div class="tag">PLAY</div>
     <h1>MEGAMUSE</h1>
     <p>The weekly prize draw. <strong>${V.payoutLine}</strong></p>
