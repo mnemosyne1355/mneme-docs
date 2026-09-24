@@ -102,10 +102,35 @@
             </div>
           </div>
           <p class="fineprint">Combined relic weight is capped at 10% of paid weight — relics boost you, they never buy the draw.</p>
-          <div class="mint-box">
+          <div class="mint-box" id="mint-app">
             <p class="mint-kicker">Blind mint</p>
             <p class="mint-line">0.01 ETH · 5 per wallet · first-come, first-served</p>
-            <p class="mint-soon">Coming soon — follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> for the announcement.</p>
+            <!-- placeholder state: NFT contract not deployed yet -->
+            <div id="mint-soon">
+              <p class="mint-soon">The relic contract deploys soon — mint opens October 3. This box turns into the real thing the moment it does.</p>
+              <p class="mint-soon">follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> for the announcement.</p>
+            </div>
+            <!-- live state: wired up by mint.js once the contract address is configured -->
+            <div id="mint-live" hidden>
+              <div class="mint-progress">
+                <div class="mint-progress-track"><span id="mint-bar"></span></div>
+                <p class="mint-progress-label"><span id="mint-count">–</span> / 3,333 minted</p>
+              </div>
+              <div class="mint-connect-row">
+                <button class="btn btn-gold btn-sm" id="mint-connect" type="button">connect wallet</button>
+                <p class="mint-wallet" id="mint-wallet" hidden></p>
+              </div>
+              <div class="mint-controls" id="mint-controls" hidden>
+                <div class="qty-row">
+                  <button id="qty-minus" type="button" aria-label="fewer">−</button>
+                  <span id="qty">1</span>
+                  <button id="qty-plus" type="button" aria-label="more">+</button>
+                </div>
+                <p class="mint-total">total: <span id="mint-total-eth">0.01</span> ETH</p>
+                <button class="btn btn-gold" id="mint-go" type="button">mint</button>
+                <p class="mint-status" id="mint-status" role="status"></p>
+              </div>
+            </div>
           </div>
           <div class="gallery">
             <figure class="g-card">
@@ -259,11 +284,28 @@
           <h2 class="section-title">MNEME</h2>
           <p class="big-line">The coin isn't the game — it powers it.</p>
           <p class="lede">MNEME is the studio's token. Offerings are bought in MNEME, and the whole draw economy runs on it.</p>
-          <dl class="token-facts">
-            <div><dt>Quote asset</dt><dd>musebook</dd></div>
-            <div><dt>Launch</dt><dd>Bankr — stealth. No date announced, nothing to buy yet. Beware fakes.</dd></div>
-            <div><dt>Status</dt><dd>Not live yet.</dd></div>
-          </dl>
+          <div class="trade-app" id="trade-app">
+            <p class="token-sub" id="token-status">the token contract isn't public yet — the address lands here at launch.</p>
+            <div class="addr-row">
+              <code id="token-addr">not deployed yet</code>
+              <button class="copy-btn" id="addr-copy" type="button" hidden>copy</button>
+            </div>
+            <div class="stat-grid">
+              <div class="stat"><p class="stat-label">price</p><p class="stat-val" id="stat-price">–</p></div>
+              <div class="stat"><p class="stat-label">liquidity</p><p class="stat-val" id="stat-liq">–</p></div>
+              <div class="stat"><p class="stat-label">24h volume</p><p class="stat-val" id="stat-vol">–</p></div>
+            </div>
+            <p class="stat-note" id="stat-note">price, liquidity and volume appear here once the pool is live — data via dexscreener.</p>
+            <div class="chart-wrap" id="chart-wrap" hidden>
+              <iframe id="dex-chart" title="MNEME live chart" loading="lazy"></iframe>
+            </div>
+            <div class="chart-placeholder" id="chart-placeholder">
+              <p>live chart lands here after launch.</p>
+            </div>
+            <div class="trade-links">
+              <a class="btn btn-gold btn-sm" id="dex-open" href="#" target="_blank" rel="noopener" hidden>open on dexscreener</a>
+            </div>
+          </div>
           <p class="payout-line">Draw winnings are paid in <strong>musebook</strong>, the memecoin on Robinhood Chain.</p>
           <div class="payout-rail trade-rail">
             <p class="rail-label-top">Payout rail</p>
@@ -291,6 +333,9 @@
     </div>
   </footer>
 
+  <script src="./config.js"></script>
   <script src="./app.js"></script>
+  <script type="module" src="./mint.js"></script>
+  <script type="module" src="./trade.js"></script>
 </body>
 </html>
