@@ -279,6 +279,20 @@ img { display: block; max-width: 100%; }
   border-radius: 50%; background: var(--gold);
 }
 .rail-note { font-size: 13px; color: #6f6484; }
+.subhead {
+  font-family: var(--display); font-size: 14px; color: var(--gold-soft);
+  margin: 44px 0 12px;
+}
+.example {
+  border: 1px solid var(--gold-dim, var(--line)); border-radius: 8px;
+  padding: 20px 22px; margin-top: 22px; background: rgba(212,175,55,0.05);
+}
+.example h4 {
+  font-family: var(--display); font-size: 12px; color: var(--gold);
+  margin: 0 0 10px;
+}
+.example p { font-size: 14px; color: var(--ink-dim); margin: 0; max-width: 68ch; }
+.example p strong { color: var(--ink); }
 .legal-body p { font-size: 14px; color: var(--ink-dim); margin-bottom: 16px; max-width: 68ch; }
 .legal-body p strong { color: var(--ink); }
 .disclosure {
