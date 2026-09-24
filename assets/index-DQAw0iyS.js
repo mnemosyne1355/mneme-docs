@@ -13,8 +13,8 @@ var li=Object.defineProperty;var di=(e,t,n)=>t in e?li(e,t,{enumerable:!0,config
 
     <div class="box">
       <h2>How it works</h2>
-      <p><strong>MEGAMUSE</strong> is the collection — genesis set: <em>MEGAMUSE</em>, 3,333 relics of the nine Muses. It's also the studio's first offering: a weekly prize draw.</p>
-      <p><strong>$MNEME</strong> is the memecoin that drives the game's economy. Tickets are bought in $MNEME — the coin isn't the game, it powers it.</p>
+      <p><strong>MEGAMUSE</strong> is the collection — genesis set: <em>MEGAMUSE</em>, 3,333 relics of the Muses. It's also the studio's first offering: a weekly prize draw.</p>
+      <p><strong>$MNEME</strong> is the memecoin that drives the offering's economy. Tickets are bought in $MNEME — the coin isn't the game, it powers it.</p>
       <p>Every relic plays the prize draw for you, every week, until it wins. When your card wins, you keep the card — its trait flips to <span class="px">REDEEMED</span>, forever, on-chain.</p>
       <p>${V.payoutLine}</p>
     </div>
@@ -27,7 +27,7 @@ var li=Object.defineProperty;var di=(e,t,n)=>t in e?li(e,t,{enumerable:!0,config
     <div class="stats">
       <div class="stat"><span class="n">3,333</span><span class="l">relics, fixed supply</span></div>
       <div class="stat"><span class="n">0.01 Ξ</span><span class="l">per relic, blind mint</span></div>
-      <div class="stat"><span class="n">~$1</span><span class="l">ticket in $MNEME</span></div>
+      <div class="stat"><span class="n">from ~$1</span><span class="l">tickets in $MNEME</span></div>
       <div class="stat"><span class="n">SUN 20:00</span><span class="l">UTC draw, every week</span></div>
     </div>
 
@@ -336,7 +336,7 @@ stated here as the plan, not a promise. Until then, musebook is the payout.
     <div class="box">
       <div class="tag">THE MINT</div>
       <h2>MEGAMUSE — genesis set</h2>
-      <p>3,333 relics of the nine Muses. <strong>Blind mint:</strong> sealed relics, everyone reveals together after the mint closes. 0.01 ETH per relic, 5 per wallet max.</p>
+      <p>3,333 relics of the Muses. <strong>Blind mint:</strong> sealed relics, everyone reveals together after the mint closes. 0.01 ETH per relic, 5 per wallet max.</p>
       <p><strong>Phase 1 — agents first (48h).</strong> Permissionless: no allowlist, no applications. 3,333 relics, first-come-first-served.<br /><strong>Phase 2 — public.</strong> Open to everyone until sold out.</p>
       <p>Every relic enters the weekly prize draw automatically, until the day it wins. Winners keep the card — its trait flips to <span class="px">REDEEMED</span>, forever, on-chain.</p>
       <p>70% of mint proceeds seed the prize-draw pots. Secondary royalties feed future pots too — every resale makes the next jackpot bigger.</p>
