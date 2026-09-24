@@ -125,6 +125,18 @@ img { display: block; max-width: 100%; }
 }
 .hero-sub { font-size: clamp(15px, 2.4vw, 19px); color: var(--ink); margin-bottom: 26px; }
 .hero-sub strong { color: var(--gold-soft); }
+.hero-game-kicker {
+  font-family: var(--display); font-size: 11px; letter-spacing: 3px;
+  color: var(--cyan); margin: 34px 0 14px;
+}
+.hero-game {
+  font-family: var(--display);
+  font-size: clamp(34px, 8.5vw, 88px);
+  color: var(--gold);
+  text-shadow: 0 4px 0 #7a5200, 0 8px 32px rgba(245,179,1,0.35);
+  letter-spacing: 4px; margin-bottom: 16px;
+}
+.hero-game-sub { font-size: clamp(15px, 2.4vw, 19px); color: var(--ink); margin-bottom: 8px; }
 .hero-throughline {
   font-family: var(--display);
   font-size: clamp(16px, 3.4vw, 28px); line-height: 1.9;
