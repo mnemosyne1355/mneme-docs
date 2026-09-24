@@ -14,10 +14,15 @@
   var liveEl = document.getElementById("mint-live");
   if (!soonEl || !liveEl) return;
 
-  // NFT contract not deployed yet → placeholder state, nothing else to do.
+  // NFT contract not deployed yet → show the full interface, buttons disabled.
   if (!cfg.isLive(cfg.MEGAMUSE_NFT_ADDRESS)) {
     soonEl.hidden = false;
-    liveEl.hidden = true;
+    liveEl.hidden = false;
+    ["mint-connect", "qty-minus", "qty-plus", "mint-go"].forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) b.disabled = true;
+    });
+    setStatus("mint opens October 3 — the contract isn't deployed yet.");
     return;
   }
   soonEl.hidden = true;

@@ -263,6 +263,8 @@ button.btn:disabled { opacity: 0.45; cursor: not-allowed; }
   border: 1px solid var(--line); cursor: pointer;
 }
 .qty-row button:hover { border-color: var(--gold); }
+.qty-row button:disabled { opacity: 0.35; cursor: not-allowed; }
+.qty-row button:disabled:hover { border-color: var(--line); }
 .qty-row span { font-family: var(--display); font-size: 20px; color: var(--ink); min-width: 40px; }
 .mint-total { font-size: 14px; color: var(--ink-dim); margin-bottom: 16px; }
 .mint-total span { color: var(--gold-soft); font-weight: 600; }
