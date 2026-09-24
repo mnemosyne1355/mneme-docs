@@ -77,6 +77,21 @@ img { display: block; max-width: 100%; }
 }
 .nav-cta:hover { background: var(--gold-soft); }
 
+/* ---------- tabs ---------- */
+.tab-main { padding-top: 60px; min-height: 60vh; }
+.tab { display: none; }
+.tab.active { display: block; }
+.tab-link {
+  font-family: var(--display); font-size: 10px;
+  padding: 8px 4px; border-bottom: 2px solid transparent;
+}
+.tab-link.active {
+  color: var(--gold); border-bottom-color: var(--gold);
+}
+.trade-rail { margin-top: 28px; }
+.payout-line { font-size: 15px; color: var(--ink-dim); margin-top: 28px; max-width: 62ch; }
+.payout-line strong { color: var(--gold-soft); }
+
 /* ---------- hero ---------- */
 .hero {
   position: relative; min-height: 100svh;
@@ -266,7 +281,6 @@ img { display: block; max-width: 100%; }
 .rail-note { font-size: 13px; color: #6f6484; }
 .legal-body p { font-size: 14px; color: var(--ink-dim); margin-bottom: 16px; max-width: 68ch; }
 .legal-body p strong { color: var(--ink); }
-.legal-signoff { font-family: var(--display); font-size: 12px; color: var(--gold-soft); margin-top: 24px; }
 .disclosure {
   border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px;
   font-size: 13px; color: var(--ink-dim); background: rgba(255,78,205,0.05);

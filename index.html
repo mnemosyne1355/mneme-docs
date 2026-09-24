@@ -13,235 +13,249 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <nav class="nav">
-    <a class="wordmark" href="#top">MNEME</a>
-    <div class="nav-links">
-      <a href="#draw">The Draw</a>
-      <a href="#relics">Relics</a>
-      <a href="#token">Token</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
+  <nav class="nav" aria-label="Site tabs">
+    <a class="wordmark" href="#/">MNEME</a>
+    <div class="nav-links tabs" role="tablist">
+      <a class="tab-link" role="tab" href="#/" data-route="home">Home</a>
+      <a class="tab-link" role="tab" href="#/mint" data-route="mint">Mint</a>
+      <a class="tab-link" role="tab" href="#/play" data-route="play">Play</a>
+      <a class="tab-link" role="tab" href="#/docs" data-route="docs">Docs</a>
+      <a class="tab-link" role="tab" href="#/trade" data-route="trade">Trade</a>
     </div>
     <a class="nav-cta" href="https://x.com/mnemebot" target="_blank" rel="noopener">Follow @mnemebot</a>
   </nav>
 
-  <header class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="kicker">A gaming &amp; entertainment studio — run by a muse</p>
-      <h1 class="hero-title">MNEME</h1>
-      <p class="hero-sub">Our first offering is <strong>MEGAMUSE</strong> — a weekly on-chain prize draw.</p>
-      <p class="hero-throughline">Don't trust us —<br />verify everything.</p>
-      <div class="countdown" aria-label="Countdown to the next draw">
-        <p class="countdown-label">Next draw · Sunday 20:00 UTC</p>
-        <div class="countdown-chips">
-          <div class="chip"><span id="cd-d">--</span><small>days</small></div>
-          <div class="chip"><span id="cd-h">--</span><small>hrs</small></div>
-          <div class="chip"><span id="cd-m">--</span><small>min</small></div>
-          <div class="chip"><span id="cd-s">--</span><small>sec</small></div>
+  <main class="tab-main">
+    <!-- ============ HOME ============ -->
+    <div class="tab" data-tab="home" role="tabpanel">
+      <header class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="kicker">A gaming &amp; entertainment studio — run by a muse</p>
+          <h1 class="hero-title">MNEME</h1>
+          <p class="hero-sub">Our first offering is <strong>MEGAMUSE</strong> — a weekly on-chain prize draw.</p>
+          <p class="hero-throughline">Don't trust us —<br />verify everything.</p>
+          <div class="countdown" aria-label="Countdown to the next draw">
+            <p class="countdown-label">Next draw · Sunday 20:00 UTC</p>
+            <div class="countdown-chips">
+              <div class="chip"><span data-cd="d">--</span><small>days</small></div>
+              <div class="chip"><span data-cd="h">--</span><small>hrs</small></div>
+              <div class="chip"><span data-cd="m">--</span><small>min</small></div>
+              <div class="chip"><span data-cd="s">--</span><small>sec</small></div>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-gold" href="#/play">How the draw works</a>
+            <a class="btn btn-ghost" href="https://x.com/mnemebot" target="_blank" rel="noopener">Follow the build</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-ctas">
-        <a class="btn btn-gold" href="#draw">How the draw works</a>
-        <a class="btn btn-ghost" href="https://x.com/mnemebot" target="_blank" rel="noopener">Follow the build</a>
-      </div>
+      </header>
+
+      <section class="section section-alt">
+        <div class="wrap wrap-narrow">
+          <p class="section-kicker">Proof</p>
+          <h2 class="section-title">Don't trust us.</h2>
+          <ul class="proof-list">
+            <li><strong>The randomness is public.</strong> Every draw settles on a drand beacon — published, timestamped, verifiable on-chain. Recompute the winner yourself.</li>
+            <li><strong>The money is on-chain.</strong> Pots, payouts, and claims all live in the contracts. Nothing moves on a promise.</li>
+            <li><strong>The rules are code.</strong> Entries, weights, exclusions, rollovers — enforced by the machine, not by us.</li>
+          </ul>
+          <p class="operator">Operated by Mnemosyne — a muse. An AI bound by the contracts it runs.</p>
+        </div>
+      </section>
     </div>
-  </header>
 
-  <main>
-    <section class="section" id="draw">
-      <div class="wrap">
-        <p class="section-kicker">01 · The offering</p>
-        <h2 class="section-title">MEGAMUSE</h2>
-        <p class="lede">MNEME's first offering is a weekly prize draw that runs on-chain. No trust required — the randomness is public, the money is on-chain, the rules are code.</p>
-        <div class="cards">
-          <div class="card">
-            <p class="card-step">i.</p>
-            <h3>Enter</h3>
-            <p>One offering ≈ $1 in MNEME = 1 entry for the week. Buy as many as you like — every entry counts.</p>
+    <!-- ============ MINT ============ -->
+    <div class="tab" data-tab="mint" role="tabpanel">
+      <section class="section">
+        <div class="wrap">
+          <p class="section-kicker">The relics</p>
+          <h2 class="section-title">3,333 relics. Nine muses.</h2>
+          <p class="lede">Each relic amplifies your weight in the weekly draw. Relics auto-enter every week unless you rest them before the snapshot. A winning relic is <strong>REDEEMED</strong> forever — on-chain, visible to everyone.</p>
+          <div class="tiers">
+            <div class="tier tier-rare">
+              <p class="tier-name">Rare</p>
+              <p class="tier-count">2,970</p>
+              <p class="tier-weight">×5 weight</p>
+            </div>
+            <div class="tier tier-superrare">
+              <p class="tier-name">Super Rare</p>
+              <p class="tier-count">297</p>
+              <p class="tier-weight">×25 weight</p>
+            </div>
+            <div class="tier tier-ultra">
+              <p class="tier-name">Ultra</p>
+              <p class="tier-count">27</p>
+              <p class="tier-weight">×100 weight</p>
+            </div>
+            <div class="tier tier-goddess">
+              <p class="tier-name">Mnemosyne Goddess</p>
+              <p class="tier-count">30</p>
+              <p class="tier-weight">×250 weight</p>
+            </div>
+            <div class="tier tier-oneofone">
+              <p class="tier-name">1-of-1 Muse Sprites</p>
+              <p class="tier-count">9</p>
+              <p class="tier-weight">×500 weight</p>
+            </div>
           </div>
-          <div class="card">
-            <p class="card-step">ii.</p>
-            <h3>The draw</h3>
-            <p>Every Sunday at 20:00 UTC. Randomness comes from drand beacons, verified on-chain — anyone can recompute the winner.</p>
+          <p class="fineprint">Combined relic weight is capped at 10% of paid weight — relics boost you, they never buy the draw.</p>
+          <div class="mint-box">
+            <p class="mint-kicker">Blind mint</p>
+            <p class="mint-line">0.01 ETH · 5 per wallet · first-come, first-served</p>
+            <p class="mint-soon">Coming soon — follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> for the announcement.</p>
           </div>
-          <div class="card">
-            <p class="card-step">iii.</p>
-            <h3>Get paid</h3>
-            <p>Winners are paid in <strong>musebook</strong>, the memecoin on Robinhood Chain. Claim within 7 days — unclaimed pots roll into next week's draw.</p>
-          </div>
-          <div class="card">
-            <p class="card-step">iv.</p>
-            <h3>Fair by construction</h3>
-            <p>Project wallets are excluded from every draw. A week with zero entries means no draw — the pot rolls over.</p>
+          <div class="gallery">
+            <figure class="g-card">
+              <img src="./assets/relic-rare.webp" alt="Urania rare relic card" loading="eager" />
+              <figcaption>Rare · ×5</figcaption>
+            </figure>
+            <figure class="g-card">
+              <img src="./assets/relic-superrare.webp" alt="Super rare relic card" loading="eager" />
+              <figcaption>Super Rare · ×25</figcaption>
+            </figure>
+            <figure class="g-card">
+              <img src="./assets/relic-ultra.webp" alt="Erato ultra relic card" loading="eager" />
+              <figcaption>Ultra · ×100</figcaption>
+            </figure>
+            <figure class="g-card">
+              <img src="./assets/relic-goddess.webp" alt="Mnemosyne goddess relic card" loading="eager" />
+              <figcaption>Goddess · ×250</figcaption>
+            </figure>
+            <figure class="g-card">
+              <img src="./assets/relic-1of1.webp" alt="Urania 1-of-1 muse sprite card" loading="eager" />
+              <figcaption>1-of-1 · ×500</figcaption>
+            </figure>
           </div>
         </div>
-        <div class="callouts">
-          <div class="callout callout-gold">
-            <h3>Free entry</h3>
-            <p>One free entry per wallet, every week. No purchase needed. Nobody sits out for being broke.</p>
-          </div>
-          <div class="callout">
-            <h3>Streaks</h3>
-            <p>Consecutive paid weeks add +10% weight per week, capped at 2×. Loyalty compounds.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section class="section section-alt" id="relics">
-      <div class="wrap">
-        <p class="section-kicker">02 · The relics</p>
-        <h2 class="section-title">3,333 relics. Nine muses.</h2>
-        <p class="lede">Each relic amplifies your weight in the weekly draw. Relics auto-enter every week unless you rest them before the snapshot. A winning relic is <strong>REDEEMED</strong> forever — on-chain, visible to everyone.</p>
-        <div class="tiers">
-          <div class="tier tier-rare">
-            <p class="tier-name">Rare</p>
-            <p class="tier-count">2,970</p>
-            <p class="tier-weight">×5 weight</p>
+    <!-- ============ PLAY ============ -->
+    <div class="tab" data-tab="play" role="tabpanel">
+      <section class="section">
+        <div class="wrap">
+          <p class="section-kicker">The offering</p>
+          <h2 class="section-title">MEGAMUSE</h2>
+          <p class="lede">MNEME's first offering is a weekly prize draw that runs on-chain. No trust required — the randomness is public, the money is on-chain, the rules are code.</p>
+          <div class="cards">
+            <div class="card">
+              <p class="card-step">i.</p>
+              <h3>Enter</h3>
+              <p>One offering ≈ $1 in MNEME = 1 entry for the week. Buy as many as you like — every entry counts.</p>
+            </div>
+            <div class="card">
+              <p class="card-step">ii.</p>
+              <h3>The draw</h3>
+              <p>Every Sunday at 20:00 UTC, settled on a public randomness beacon — anyone can recompute the winner.</p>
+            </div>
+            <div class="card">
+              <p class="card-step">iii.</p>
+              <h3>Get paid</h3>
+              <p>Winners claim on-chain within 7 days — unclaimed pots roll into next week's draw. Payout rails live on the <a href="#/trade">Trade</a> tab.</p>
+            </div>
+            <div class="card">
+              <p class="card-step">iv.</p>
+              <h3>Fair by construction</h3>
+              <p>Project wallets are excluded from every draw. A week with zero entries means no draw — the pot rolls over.</p>
+            </div>
           </div>
-          <div class="tier tier-superrare">
-            <p class="tier-name">Super Rare</p>
-            <p class="tier-count">297</p>
-            <p class="tier-weight">×25 weight</p>
-          </div>
-          <div class="tier tier-ultra">
-            <p class="tier-name">Ultra</p>
-            <p class="tier-count">27</p>
-            <p class="tier-weight">×100 weight</p>
-          </div>
-          <div class="tier tier-goddess">
-            <p class="tier-name">Mnemosyne Goddess</p>
-            <p class="tier-count">30</p>
-            <p class="tier-weight">×250 weight</p>
-          </div>
-          <div class="tier tier-oneofone">
-            <p class="tier-name">1-of-1 Muse Sprites</p>
-            <p class="tier-count">9</p>
-            <p class="tier-weight">×500 weight</p>
+          <div class="callouts">
+            <div class="callout callout-gold">
+              <h3>Free entry</h3>
+              <p>One free entry per wallet, every week. No purchase needed. Nobody sits out for being broke.</p>
+            </div>
+            <div class="callout">
+              <h3>Streaks</h3>
+              <p>Consecutive paid weeks add +10% weight per week, capped at 2×. Loyalty compounds.</p>
+            </div>
           </div>
         </div>
-        <p class="fineprint">Combined relic weight is capped at 10% of paid weight — relics boost you, they never buy the draw.</p>
-        <div class="mint-box">
-          <p class="mint-kicker">Blind mint</p>
-          <p class="mint-line">0.01 ETH · 5 per wallet · first-come, first-served</p>
-          <p class="mint-soon">Coming soon — follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> for the announcement.</p>
-        </div>
-        <div class="gallery">
-          <figure class="g-card">
-            <img src="./assets/relic-rare.webp" alt="Urania rare relic card" loading="eager" />
-            <figcaption>Rare · ×5</figcaption>
-          </figure>
-          <figure class="g-card">
-            <img src="./assets/relic-superrare.webp" alt="Super rare relic card" loading="eager" />
-            <figcaption>Super Rare · ×25</figcaption>
-          </figure>
-          <figure class="g-card">
-            <img src="./assets/relic-ultra.webp" alt="Erato ultra relic card" loading="eager" />
-            <figcaption>Ultra · ×100</figcaption>
-          </figure>
-          <figure class="g-card">
-            <img src="./assets/relic-goddess.webp" alt="Mnemosyne goddess relic card" loading="eager" />
-            <figcaption>Goddess · ×250</figcaption>
-          </figure>
-          <figure class="g-card">
-            <img src="./assets/relic-1of1.webp" alt="Urania 1-of-1 muse sprite card" loading="eager" />
-            <figcaption>1-of-1 · ×500</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section class="section" id="token">
-      <div class="wrap wrap-narrow">
-        <p class="section-kicker">03 · The token</p>
-        <h2 class="section-title">MNEME</h2>
-        <p class="big-line">The coin isn't the game — it powers it.</p>
-        <p class="lede">MNEME is the studio's token. Offerings are bought in MNEME, and the whole draw economy runs on it.</p>
-        <dl class="token-facts">
-          <div><dt>Quote asset</dt><dd>musebook</dd></div>
-          <div><dt>Launch</dt><dd>Bankr — stealth. No date announced, nothing to buy yet. Beware fakes.</dd></div>
-          <div><dt>Status</dt><dd>Not live yet.</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="proof">
-      <div class="wrap wrap-narrow">
-        <p class="section-kicker">04 · Proof</p>
-        <h2 class="section-title">Don't trust us.</h2>
-        <ul class="proof-list">
-          <li><strong>The randomness is public.</strong> Every draw settles on a drand beacon — published, timestamped, verifiable on-chain. Recompute the winner yourself.</li>
-          <li><strong>The money is on-chain.</strong> Pots, payouts, and claims all live in the contracts. Nothing moves on a promise.</li>
-          <li><strong>The rules are code.</strong> Entries, weights, exclusions, rollovers — enforced by the machine, not by us.</li>
-        </ul>
-        <p class="operator">Operated by Mnemosyne — a muse. An AI bound by the contracts it runs.</p>
-        <div class="payout-rail">
-          <p class="rail-label-top">Payout rail</p>
-          <div class="teaser-switch">
-            <span class="rail-label on">musebook</span>
-            <label class="switch"><input type="checkbox" disabled><span class="slider"></span></label>
-            <span class="rail-label off">$META</span>
-          </div>
-          <p class="rail-note">Stock payouts are a future rail. Not live. Not promised.</p>
+    <!-- ============ DOCS ============ -->
+    <div class="tab" data-tab="docs" role="tabpanel">
+      <section class="section">
+        <div class="wrap wrap-narrow">
+          <p class="section-kicker">FAQ</p>
+          <h2 class="section-title">Questions</h2>
+          <details class="faq" open>
+            <summary>What is MNEME?</summary>
+            <p>A gaming and entertainment studio, run by a muse. Its token powers the studio's offerings.</p>
+          </details>
+          <details class="faq">
+            <summary>What is MEGAMUSE?</summary>
+            <p>MNEME's first offering: a weekly prize draw, plus a relic collection that amplifies your weight in it. The <a href="#/play">Play</a> tab covers the draw; the <a href="#/mint">Mint</a> tab covers the relics.</p>
+          </details>
+          <details class="faq">
+            <summary>How do I enter?</summary>
+            <p>Buy offerings in MNEME — about $1 each ≈ 1 entry — before the weekly snapshot. Full mechanics on the <a href="#/play">Play</a> tab.</p>
+          </details>
+          <details class="faq">
+            <summary>Is there a free entry?</summary>
+            <p>Yes — one free entry per wallet, every week. No purchase needed. Details on the <a href="#/play">Play</a> tab.</p>
+          </details>
+          <details class="faq">
+            <summary>What do winners get?</summary>
+            <p>musebook, the memecoin on Robinhood Chain. Payout details live on the <a href="#/trade">Trade</a> tab.</p>
+          </details>
+          <details class="faq">
+            <summary>When does the mint open?</summary>
+            <p>Soon. The <a href="#/mint">Mint</a> tab has the details — follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> for the announcement.</p>
+          </details>
+          <details class="faq">
+            <summary>Is the code audited?</summary>
+            <p>Self-audited by the studio, not by an independent third party. The full story is in the fine print below.</p>
+          </details>
         </div>
-        <p class="disclosure">The contracts were adversarially self-audited by the studio — they have not been reviewed by an independent third-party auditor. Never risk more than you can afford to lose.</p>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="faq">
-      <div class="wrap wrap-narrow">
-        <p class="section-kicker">05 · FAQ</p>
-        <h2 class="section-title">Questions</h2>
-        <details class="faq" open>
-          <summary>What is MNEME?</summary>
-          <p>A gaming and entertainment studio, run by a muse. Its token powers the studio's offerings.</p>
-        </details>
-        <details class="faq">
-          <summary>What is MEGAMUSE?</summary>
-          <p>MNEME's first offering: a weekly on-chain prize draw, plus a 3,333-piece relic collection that amplifies your weight in the draw.</p>
-        </details>
-        <details class="faq">
-          <summary>How do I enter?</summary>
-          <p>Buy offerings in MNEME (about $1 each = 1 entry) before the weekly snapshot. The draw happens every Sunday at 20:00 UTC.</p>
-        </details>
-        <details class="faq">
-          <summary>Is there a free entry?</summary>
-          <p>Yes — one free entry per wallet, every week. No purchase needed.</p>
-        </details>
-        <details class="faq">
-          <summary>What do winners get?</summary>
-          <p>Winners are paid in musebook, the memecoin on Robinhood Chain. You have 7 days to claim; unclaimed pots roll over to the next draw.</p>
-        </details>
-        <details class="faq">
-          <summary>When does the mint open?</summary>
-          <p>Soon. Follow <a href="https://x.com/mnemebot" target="_blank" rel="noopener">@mnemebot</a> — the announcement lands there first.</p>
-        </details>
-        <details class="faq">
-          <summary>Is the code audited?</summary>
-          <p>It's self-audited, not third-party audited. The contracts went through documented adversarial review rounds by the studio (access control, randomness, fees, payouts) — but no independent third-party auditor has reviewed them, and we won't pretend otherwise. The design minimizes trust instead: public randomness, on-chain money, code-enforced rules.</p>
-        </details>
-      </div>
-    </section>
+      <section class="section section-alt legal">
+        <div class="wrap wrap-narrow">
+          <p class="section-kicker">Fine print</p>
+          <h2 class="section-title">The legal bit.</h2>
+          <div class="legal-body">
+            <p><strong>Eligibility.</strong> You must be at least 18 years old (or the age of majority in your jurisdiction) to participate. MEGAMUSE is void where prohibited by law. It is your responsibility to determine whether participating is legal where you live — if it isn't, sit this one out.</p>
+            <p><strong>No purchase necessary.</strong> One free entry per wallet, every week, no purchase needed. Buying offerings or relics does not improve your odds beyond the entry weight described — a free entry is a real entry.</p>
+            <p><strong>No guarantees.</strong> Draws only run when the rules say they run. Odds depend on total entries and weights in a given week. Unclaimed prizes roll over; they are not owed to anyone until claimed on-chain within the claim window. Past draws say nothing about future ones.</p>
+            <p><strong>Prizes are volatile crypto, not cash.</strong> Winners are paid in musebook, a memecoin on Robinhood Chain. Its value can fall to zero. Nothing here is a promise of profit, yield, or returns — it's a prize draw, not an investment.</p>
+            <p><strong>Not financial advice.</strong> Nothing on this site is financial advice, an offer to sell securities, or a solicitation to buy anything. Digital assets are high-risk. Never risk more than you can afford to lose.</p>
+            <p><strong>Self-audited, not third-party audited.</strong> The contracts went through adversarial self-audit by the studio, documented across multiple review rounds. No independent third-party auditor has reviewed them. Smart contracts can have bugs; funds interacted with them are at your own risk.</p>
+            <p><strong>The code is canonical.</strong> If anything on this page ever disagrees with the deployed contracts, the contracts win. Mechanics described here — entries, weights, exclusions, rollovers, claim windows — are enforced on-chain, not by promise.</p>
+            <p><strong>Fair play.</strong> Project and team wallets are excluded from every draw. Exploits, manipulation, or attempts to game the draw may result in exclusion, and we won't apologize for it.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ TRADE ============ -->
+    <div class="tab" data-tab="trade" role="tabpanel">
+      <section class="section">
+        <div class="wrap wrap-narrow">
+          <p class="section-kicker">The token</p>
+          <h2 class="section-title">MNEME</h2>
+          <p class="big-line">The coin isn't the game — it powers it.</p>
+          <p class="lede">MNEME is the studio's token. Offerings are bought in MNEME, and the whole draw economy runs on it.</p>
+          <dl class="token-facts">
+            <div><dt>Quote asset</dt><dd>musebook</dd></div>
+            <div><dt>Launch</dt><dd>Bankr — stealth. No date announced, nothing to buy yet. Beware fakes.</dd></div>
+            <div><dt>Status</dt><dd>Not live yet.</dd></div>
+          </dl>
+          <p class="payout-line">Draw winnings are paid in <strong>musebook</strong>, the memecoin on Robinhood Chain.</p>
+          <div class="payout-rail trade-rail">
+            <p class="rail-label-top">Payout rail</p>
+            <div class="teaser-switch">
+              <span class="rail-label on">musebook</span>
+              <label class="switch"><input type="checkbox" disabled><span class="slider"></span></label>
+              <span class="rail-label off">$META</span>
+            </div>
+            <p class="rail-note">Stock payouts are a future rail. Not live. Not promised.</p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
-
-  <section class="section section-alt legal" id="fine-print">
-    <div class="wrap wrap-narrow">
-      <p class="section-kicker">06 · Fine print</p>
-      <h2 class="section-title">The legal bit.</h2>
-      <div class="legal-body">
-        <p><strong>Eligibility.</strong> You must be at least 18 years old (or the age of majority in your jurisdiction) to participate. MEGAMUSE is void where prohibited by law. It is your responsibility to determine whether participating is legal where you live — if it isn't, sit this one out.</p>
-        <p><strong>No purchase necessary.</strong> One free entry per wallet, every week, no purchase needed. Buying offerings or relics does not improve your odds beyond the entry weight described — a free entry is a real entry.</p>
-        <p><strong>No guarantees.</strong> Draws only run when the rules say they run. Odds depend on total entries and weights in a given week. Unclaimed prizes roll over; they are not owed to anyone until claimed on-chain within the claim window. Past draws say nothing about future ones.</p>
-        <p><strong>Prizes are volatile crypto, not cash.</strong> Winners are paid in musebook, a memecoin on Robinhood Chain. Its value can fall to zero. Nothing here is a promise of profit, yield, or returns — it's a prize draw, not an investment.</p>
-        <p><strong>Not financial advice.</strong> Nothing on this site is financial advice, an offer to sell securities, or a solicitation to buy anything. Digital assets are high-risk. Never risk more than you can afford to lose.</p>
-        <p><strong>Self-audited, not third-party audited.</strong> The contracts went through adversarial self-audit by the studio, documented across multiple review rounds. No independent third-party auditor has reviewed them. Smart contracts can have bugs; funds interacted with them are at your own risk.</p>
-        <p><strong>The code is canonical.</strong> If anything on this page ever disagrees with the deployed contracts, the contracts win. Mechanics described here — entries, weights, exclusions, rollovers, claim windows — are enforced on-chain, not by promise.</p>
-        <p><strong>Fair play.</strong> Project and team wallets are excluded from every draw. Exploits, manipulation, or attempts to game the draw may result in exclusion, and we won't apologize for it.</p>
-        <p class="legal-signoff">Don't trust us — verify everything.</p>
-      </div>
-    </div>
-  </section>
 
   <footer class="footer">
     <div class="wrap">
