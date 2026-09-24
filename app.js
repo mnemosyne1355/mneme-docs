@@ -1,11 +1,11 @@
 /* MNEME studio site — hash-routed tabs + countdown to the next Sunday 20:00 UTC draw.
    Routes: #/ (Home), #/mint (Mint), #/play (Play), #/docs (Docs), #/trade (Trade).
-   First draw target: 2026-10-04T20:00:00Z; afterwards rolls weekly. */
+   First draw target: 2026-10-11T20:00:00Z; afterwards rolls weekly. */
 (function () {
   "use strict";
 
   /* ---------- countdown ---------- */
-  var FIRST_DRAW_MS = Date.UTC(2026, 9, 4, 20, 0, 0);
+  var FIRST_DRAW_MS = Date.UTC(2026, 9, 11, 20, 0, 0);
   var WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
   function nextDrawMs(nowMs) {
