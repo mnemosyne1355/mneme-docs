@@ -109,33 +109,62 @@
     return;
   }
 
+  function onAccount(acct) {
+    account = acct;
+    connectBtn.hidden = true;
+    walletLine.hidden = false;
+    walletLine.textContent = "connected: " + shortAddr(account);
+    controls.hidden = false;
+    setStatus("checking this wallet's mints…");
+    return readUint(SEL.mintedBy, account).then(function (already) {
+      var remaining = walletLimit - Number(already);
+      if (remaining <= 0) {
+        setStatus("this wallet already minted its " + walletLimit + " — nice collection.");
+        $("mint-go").disabled = true;
+      } else {
+        setStatus("this wallet can mint " + remaining + " more.");
+      }
+    }).catch(function () {
+      setStatus("connected — pick a quantity and mint.");
+    });
+  }
+
+  function onDisconnect() {
+    account = null;
+    connectBtn.hidden = false;
+    walletLine.hidden = true;
+    controls.hidden = true;
+    setStatus("wallet disconnected.");
+  }
+
+  var shared = window.MnemeWallet;
   connectBtn.addEventListener("click", function () {
     setStatus("connecting…");
+    if (shared) {
+      shared.connect().then(onAccount).catch(function (err) {
+        console.warn("[mint] connect failed", err);
+        setStatus("couldn't connect — " + friendlyError(err));
+      });
+      return;
+    }
     window.ethereum.request({ method: "eth_requestAccounts" }).then(function (accounts) {
       account = accounts[0];
-      return ensureChain().then(function () { return account; });
-    }).then(function () {
-      connectBtn.hidden = true;
-      walletLine.hidden = false;
-      walletLine.textContent = "connected: " + shortAddr(account);
-      controls.hidden = false;
-      setStatus("checking this wallet's mints…");
-      return readUint(SEL.mintedBy, account).then(function (already) {
-        var remaining = walletLimit - Number(already);
-        if (remaining <= 0) {
-          setStatus("this wallet already minted its " + walletLimit + " — nice collection.");
-          $("mint-go").disabled = true;
-        } else {
-          setStatus("this wallet can mint " + remaining + " more.");
-        }
-      }).catch(function () {
-        setStatus("connected — pick a quantity and mint.");
-      });
+      return ensureChain().then(function () { return onAccount(account); });
     }).catch(function (err) {
       console.warn("[mint] connect failed", err);
       setStatus("couldn't connect — " + friendlyError(err));
     });
   });
+
+  // pick up a wallet already connected from the nav button
+  if (shared) {
+    if (shared.account) onAccount(shared.account);
+    window.addEventListener("mneme:account", function (e) {
+      var acct = e && e.detail && e.detail.account;
+      if (acct && acct !== account) onAccount(acct);
+      else if (!acct && account) onDisconnect();
+    });
+  }
 
   function ensureChain() {
     return window.ethereum.request({ method: "eth_chainId" }).then(function (id) {

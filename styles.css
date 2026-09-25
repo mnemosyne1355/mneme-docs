@@ -77,6 +77,12 @@ img { display: block; max-width: 100%; }
   background: var(--gold); padding: 9px 14px; border-radius: 4px; font-weight: 600;
 }
 .nav-cta:hover { background: var(--gold-soft); }
+button.nav-cta { border: none; cursor: pointer; font-family: var(--display); }
+#nav-connect.connected {
+  background: transparent; color: var(--gold-soft);
+  border: 1px solid var(--gold); padding: 8px 13px;
+}
+#nav-connect.connected:hover { background: rgba(245,179,1,0.12); }
 
 /* ---------- tabs ---------- */
 .tab-main { padding-top: 60px; min-height: 60vh; }
@@ -126,18 +132,19 @@ img { display: block; max-width: 100%; }
 }
 .hero-sub { font-size: clamp(15px, 2.4vw, 19px); color: var(--ink); margin-bottom: 26px; }
 .hero-sub strong { color: var(--gold-soft); }
-.hero-game-kicker {
-  font-family: var(--display); font-size: 11px; letter-spacing: 3px;
-  color: var(--cyan); margin: 34px 0 14px;
-}
 .hero-game {
   font-family: var(--display);
   font-size: clamp(34px, 8.5vw, 88px);
   color: var(--gold);
   text-shadow: 0 4px 0 #7a5200, 0 8px 32px rgba(245,179,1,0.35);
-  letter-spacing: 4px; margin-bottom: 16px;
+  letter-spacing: 4px; margin: 34px 0 16px;
 }
-.hero-game-sub { font-size: clamp(15px, 2.4vw, 19px); color: var(--ink); margin-bottom: 8px; }
+.hero-game span {
+  display: block;
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--cyan); margin-bottom: 14px;
+  text-shadow: none;
+}
 .hero-throughline {
   font-family: var(--display);
   font-size: clamp(16px, 3.4vw, 28px); line-height: 1.9;
@@ -382,6 +389,38 @@ button.btn:disabled { opacity: 0.45; cursor: not-allowed; }
 }
 .example p { font-size: 14px; color: var(--ink-dim); margin: 0; max-width: 68ch; }
 .example p strong { color: var(--ink); }
+
+/* detailed mechanics */
+.mech { margin-top: 8px; border-top: 1px solid var(--line); }
+.mech-row {
+  display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.mech-row h4 {
+  font-family: var(--display); font-size: 11px; letter-spacing: 1px;
+  color: var(--gold-soft); margin: 2px 0 0; text-transform: uppercase;
+}
+.mech-row p { font-size: 14px; color: var(--ink-dim); margin: 0; max-width: 68ch; }
+.mech-row p strong { color: var(--ink); }
+
+/* risk disclaimers */
+.risk-box {
+  border: 1px solid #8a5a00; border-radius: 8px;
+  background: rgba(245,179,1,0.06);
+  padding: 20px 22px; margin-top: 28px;
+}
+.risk-box h3 {
+  font-family: var(--display); font-size: 12px; color: var(--gold);
+  margin: 0 0 12px;
+}
+.risk-box ul { margin: 0; padding-left: 20px; }
+.risk-box li { font-size: 14px; color: var(--ink-dim); margin-bottom: 8px; max-width: 68ch; }
+.risk-box li strong { color: var(--ink); }
+.risk-note {
+  font-size: 13px; color: var(--ink-dim); max-width: 68ch;
+  border-left: 3px solid var(--gold); padding-left: 14px; margin: 24px 0 8px;
+}
+.risk-note strong { color: var(--gold-soft); }
 .legal-body p { font-size: 14px; color: var(--ink-dim); margin-bottom: 16px; max-width: 68ch; }
 .legal-body p strong { color: var(--ink); }
 .disclosure {
@@ -431,4 +470,5 @@ button.btn:disabled { opacity: 0.45; cursor: not-allowed; }
   .token-facts dd { padding-top: 8px; }
   .chip { min-width: 64px; }
   .chip span { font-size: 16px; }
+  .mech-row { grid-template-columns: 1fr; gap: 8px; }
 }

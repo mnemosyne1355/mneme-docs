@@ -97,4 +97,101 @@
 
   window.addEventListener("hashchange", render);
   render();
+
+  /* ---------- wallet (nav connect button) ---------- */
+  window.MnemeWallet = (function () {
+    var cfg = window.MNEME_CONFIG || {};
+    var CHAIN_HEX = "0x" + (cfg.CHAIN_ID || 4663).toString(16);
+    var account = null;
+    var btn = document.getElementById("nav-connect");
+
+    function shortAddr(a) { return a.slice(0, 6) + "…" + a.slice(-4); }
+
+    function renderBtn() {
+      if (!btn) return;
+      if (account) {
+        btn.textContent = shortAddr(account);
+        btn.classList.add("connected");
+        btn.title = "Connected: " + account + " — click to disconnect";
+      } else {
+        btn.textContent = "Connect Wallet";
+        btn.classList.remove("connected");
+        btn.title = "";
+      }
+    }
+
+    function notify() {
+      renderBtn();
+      window.dispatchEvent(new CustomEvent("mneme:account", { detail: { account: account } }));
+    }
+
+    function ensureChain() {
+      return window.ethereum.request({ method: "eth_chainId" }).then(function (id) {
+        if (id && id.toLowerCase() === CHAIN_HEX.toLowerCase()) return;
+        return window.ethereum.request({
+          method: "wallet_switchEthereumChain", params: [{ chainId: CHAIN_HEX }]
+        }).catch(function (err) {
+          if (err && err.code === 4902) {
+            return window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [{
+                chainId: CHAIN_HEX,
+                chainName: cfg.CHAIN_NAME || "Robinhood Chain",
+                nativeCurrency: { name: "Ether", symbol: cfg.NATIVE_SYMBOL || "ETH", decimals: 18 },
+                rpcUrls: [cfg.RPC_URL || "https://rpc.mainnet.chain.robinhood.com"]
+              }]
+            });
+          }
+          throw err;
+        });
+      });
+    }
+
+    function connect() {
+      if (!window.ethereum) {
+        if (btn) {
+          btn.textContent = "No wallet found";
+          setTimeout(renderBtn, 2200);
+        }
+        return Promise.reject(new Error("no ethereum provider"));
+      }
+      if (btn) btn.textContent = "Connecting…";
+      return window.ethereum.request({ method: "eth_requestAccounts" }).then(function (accounts) {
+        account = (accounts && accounts[0]) || null;
+        if (!account) throw new Error("no accounts returned");
+        return ensureChain().then(function () { notify(); return account; });
+      }).catch(function (err) {
+        console.warn("[wallet] connect failed", err);
+        renderBtn();
+        throw err;
+      });
+    }
+
+    function disconnect() {
+      account = null;
+      notify();
+    }
+
+    if (btn) {
+      btn.addEventListener("click", function () {
+        if (account) disconnect();
+        else connect().catch(function () {});
+      });
+      if (window.ethereum && window.ethereum.on) {
+        window.ethereum.on("accountsChanged", function (accounts) {
+          account = (accounts && accounts[0]) || null;
+          notify();
+        });
+        window.ethereum.on("chainChanged", function () { window.location.reload(); });
+      }
+    }
+
+    renderBtn();
+
+    return {
+      get account() { return account; },
+      connect: connect,
+      disconnect: disconnect
+    };
+  })();
 })();

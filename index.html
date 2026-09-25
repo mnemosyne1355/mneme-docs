@@ -22,7 +22,7 @@
       <a class="tab-link" role="tab" href="#/docs" data-route="docs">Docs</a>
       <a class="tab-link" role="tab" href="#/trade" data-route="trade">Trade</a>
     </div>
-    <a class="nav-cta" href="https://x.com/mnemebot" target="_blank" rel="noopener">Follow @mnemebot</a>
+    <button class="nav-cta" id="nav-connect" type="button">Connect Wallet</button>
   </nav>
 
   <main class="tab-main">
@@ -33,10 +33,9 @@
         <div class="hero-inner">
           <p class="kicker">A gaming &amp; entertainment studio — run by a muse</p>
           <h1 class="hero-title">MNEME</h1>
-          <p class="hero-game-kicker">Our first offering</p>
-          <h2 class="hero-game">MEGAMUSE</h2>
-          <p class="hero-game-sub">A weekly on-chain prize draw. 3,333 relic cards, each one a ticket. Winners paid in musebook.</p>
-          <p class="hero-throughline">Don't just trust us —<br />check the chain yourself.</p>
+          <p class="hero-game"><span>Our first offering</span>MEGAMUSE</p>
+          <p class="hero-sub">A weekly on-chain prize draw. 3,333 relic cards, each one a ticket. Winners paid in musebook.</p>
+          <p class="hero-throughline">Don't just trust us — check the chain yourself.</p>
           <div class="countdown" aria-label="Countdown to the next draw">
             <p class="countdown-label">Next draw · Sunday 20:00 UTC</p>
             <div class="countdown-chips">
@@ -132,6 +131,7 @@
               </div>
             </div>
           </div>
+          <p class="risk-note"><strong>Blind mint, real risk.</strong> Your tier is random — the overwhelming majority of relics are Rare. NFTs are volatile and illiquid; never mint more than you can afford to lose. The contracts are self-audited, not third-party audited.</p>
           <div class="gallery">
             <figure class="g-card">
               <img src="./assets/relic-rare.webp" alt="Polyhymnia rare relic card" loading="eager" />
@@ -215,6 +215,35 @@
             <div class="callout callout-gold">
               <h3>Free entry</h3>
               <p>One free entry per wallet, every week. No purchase needed — nobody sits out for being broke. Free entries carry base weight only: no relic or streak bonuses, and all free weight combined is capped at 5% of paid weight.</p>
+            </div>
+          </div>
+
+          <h3 class="subhead">The mechanics, in detail</h3>
+          <p class="lede">Everything below is enforced by the contracts — not by promise. If this page ever disagrees with the code on-chain, the code wins.</p>
+          <div class="mech">
+            <div class="mech-row">
+              <h4>Offerings</h4>
+              <p>Entries are called <strong>offerings</strong>. You buy them in MNEME at a floating price that tracks about $1 — a keeper can re-peg it up to ±25% per update, at most once a day, and it can never fall below 10% of the deploy peg. One offering, one entry for the week.</p>
+            </div>
+            <div class="mech-row">
+              <h4>The Oracle</h4>
+              <p>The draw ceremony. Every Sunday at 20:00 UTC the week's entries lock and the draw settles on a <strong>drand</strong> randomness beacon — published, timestamped, and verified on-chain. Anyone can post the beacon and settle the draw; nobody needs our permission. Winners are pull-claims: the contract holds the pot until you claim it.</p>
+            </div>
+            <div class="mech-row">
+              <h4>Where the money goes</h4>
+              <p>Every offering payment goes to the prize reserve. When relics mint, the proceeds split on-chain, automatically: <strong>70%</strong> seeds MNEME/musebook liquidity (LP tokens burned forever), <strong>20%</strong> buys and burns MNEME, <strong>10%</strong> funds studio operations. No hands touch it in between.</p>
+            </div>
+            <div class="mech-row">
+              <h4>Claiming</h4>
+              <p>Winners have <strong>7 days</strong> to claim on-chain. Unclaimed prizes roll into the next week's pot — they are never kept by the studio.</p>
+            </div>
+            <div class="mech-row">
+              <h4>Fair by construction</h4>
+              <p>Project and team wallets are <strong>excluded from every draw</strong>, enforced in code. A week with zero paid entries means no draw — the pot simply rolls over.</p>
+            </div>
+            <div class="mech-row">
+              <h4>Relic lifecycle</h4>
+              <p>Relics auto-enter every week. Rest one before the Sunday snapshot to sit it out. If your relic wins, it's <strong>REDEEMED</strong> — retired permanently, on-chain, visible to everyone. A redeemed relic never enters again.</p>
             </div>
           </div>
         </div>
@@ -315,6 +344,15 @@
               <span class="rail-label off">$META</span>
             </div>
             <p class="rail-note">Stock payouts are a future rail. Not live. Not promised.</p>
+          </div>
+          <div class="risk-box">
+            <h3>Before you trade</h3>
+            <ul>
+              <li><strong>MNEME is volatile.</strong> Its price can fall to zero. Never risk more than you can afford to lose.</li>
+              <li><strong>This is not an investment.</strong> MNEME powers the studio's offerings — it is not a promise of profit, yield, or returns.</li>
+              <li><strong>Verify the contract yourself.</strong> Only trust the address published on this page. Scammers deploy fakes — check before you buy.</li>
+              <li><strong>Smart-contract risk.</strong> The contracts are adversarially self-audited by the studio, not by an independent third party. Bugs are possible; anything you put through them is at your own risk.</li>
+            </ul>
           </div>
         </div>
       </section>
