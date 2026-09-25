@@ -39,6 +39,16 @@
     // --- Dexscreener (pair indexed 2026-09-25) ---
     DEXSCREENER_PAIR_URL: "https://dexscreener.com/robinhood/0x9f54bc47e331a5cca760e848f313808b364d54791ee4ee37a8adbe04afb26f40",
 
+    // --- Uniswap periphery (Robinhood Chain) — used by the on-site swap widget ---
+    // UniversalRouter v2.1.1 (canonical Uniswap deployment on 4663; checksummed per EIP-55)
+    UNIVERSAL_ROUTER: "0x8876789976dEcBfCbBbe364623C63652db8C0904",
+    // V4Quoter (canonical Uniswap deployment on 4663)
+    V4_QUOTER: "0x8Dc178eFB8111BB0973Dd9d722ebeFF267c98F94",
+    // Permit2 (canonical cross-chain deployment)
+    PERMIT2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+    // block explorer tx links
+    EXPLORER_TX: "https://robinhoodchain.blockscout.com/tx/",
+
     // --- mint canon (matches Megamuse.sol constants) ---
     MINT: {
       PRICE_ETH: "0.01",

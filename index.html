@@ -435,6 +435,42 @@
               <code id="token-addr">0x86bFDCC224f5590DCAc42b092b4e66B471934Ba3</code>
               <button class="copy-btn" id="addr-copy" type="button">copy</button>
             </div>
+            <div class="swap-card" id="swap-card">
+              <div class="swap-head">
+                <p class="swap-title">Trade on this page</p>
+                <div class="swap-direction">
+                  <button type="button" class="swap-dir active" data-dir="buy">Buy MNEME</button>
+                  <button type="button" class="swap-dir" data-dir="sell">Sell MNEME</button>
+                </div>
+              </div>
+              <div class="swap-field">
+                <div class="swap-field-top">
+                  <label for="swap-in">You pay</label>
+                  <span class="swap-bal">Balance: <span id="swap-bal-in">–</span> <button type="button" id="swap-max" hidden>MAX</button></span>
+                </div>
+                <div class="swap-input-row">
+                  <input id="swap-in" inputmode="decimal" placeholder="0.0" autocomplete="off" spellcheck="false" />
+                  <span class="swap-token" id="swap-token-in">musebook</span>
+                </div>
+              </div>
+              <div class="swap-field">
+                <div class="swap-field-top"><label for="swap-out">You receive <span class="swap-dim">(estimated)</span></label></div>
+                <div class="swap-input-row">
+                  <input id="swap-out" readonly tabindex="-1" placeholder="–" />
+                  <span class="swap-token" id="swap-token-out">MNEME</span>
+                </div>
+              </div>
+              <div class="swap-details" id="swap-details" hidden>
+                <div class="swap-detail"><span>Rate</span><span id="swap-rate">–</span></div>
+                <div class="swap-detail"><span>Price impact</span><span id="swap-impact">–</span></div>
+                <div class="swap-detail"><span>Min. received <span class="swap-dim">(2% slippage)</span></span><span id="swap-min">–</span></div>
+              </div>
+              <p class="swap-status" id="swap-status">Connect your wallet to trade.</p>
+              <div class="swap-actions">
+                <button class="btn btn-gold btn-sm" id="swap-primary" type="button">Connect wallet</button>
+              </div>
+              <p class="swap-fine">Swaps run through Uniswap v4 directly on Robinhood Chain — no middleman. The pool is thin, so large trades move the price: check the impact before you confirm. You need <strong>musebook</strong> to buy MNEME.</p>
+            </div>
             <div class="stat-grid">
               <div class="stat"><p class="stat-label">price</p><p class="stat-val" id="stat-price">–</p></div>
               <div class="stat"><p class="stat-label">liquidity</p><p class="stat-val" id="stat-liq">–</p></div>
@@ -489,5 +525,6 @@
   <script src="./dashboard.js"></script>
   <script type="module" src="./mint.js"></script>
   <script type="module" src="./trade.js"></script>
+  <script type="module" src="./swap.js"></script>
 </body>
 </html>

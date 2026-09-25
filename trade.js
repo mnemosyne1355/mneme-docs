@@ -1,8 +1,7 @@
 /* MNEME studio site — trade interface.
-   Read-only: token header + pool stats (via Dexscreener's public API) +
-   embedded chart + deep links. No in-page swap — v4 quoting through the
-   Bankr hook isn't something to half-wire; the chart + links are the
-   honest version until a proper swap widget is built. */
+   Read-only market readouts: token header + pool stats (via Dexscreener's
+   public API) + embedded chart + deep links. The on-page swap widget lives
+   in swap.js (UniversalRouter v2.1.1 -> the MNEME/musebook Uniswap v4 pool). */
 (function () {
   "use strict";
 
