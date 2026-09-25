@@ -179,6 +179,7 @@
 
   async function runQuote() {
     var amountIn = parseInput();
+    var myInput = els.in.value;
     lastQuote = null;
     els.out.value = "";
     els.details.hidden = true;
@@ -199,6 +200,7 @@
         address: QUOTER, abi: quoterAbi, functionName: "quoteExactInputSingle",
         args: [{ poolKey: POOL_KEY, zeroForOne: zeroForOne, exactAmount: spotIn, hookData: "0x" }]
       }))[0];
+      if (els.in.value !== myInput) return; // user kept typing — a fresher quote is on its way
       var minOut = amountOut * BigInt(10000 - SLIPPAGE_BPS) / 10000n;
       lastQuote = { amountIn: amountIn, amountOut: amountOut, minOut: minOut, inputToken: inT, outputToken: outT, zeroForOne: zeroForOne };
 
