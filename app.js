@@ -141,7 +141,7 @@
 
   /* ---------- hash router ---------- */
   var ROUTES = {
-    home:  { tab: "home",  title: "MNEME — gaming & entertainment studio" },
+    home:  { tab: "home",  title: "MNEME — games & entertainment studio" },
     mint:  { tab: "mint",  title: "Mint — MNEME" },
     play:  { tab: "play",  title: "Play — MNEME" },
     docs:  { tab: "docs",  title: "Docs — MNEME" },
