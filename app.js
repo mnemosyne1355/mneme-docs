@@ -46,6 +46,34 @@
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
+  /* ---------- mint countdown (front-page news) ---------- */
+  var MINT_OPEN_MS = Date.UTC(2026, 9, 3, 0, 0, 0); // Oct 3, 2026 00:00 UTC
+
+  function tickMintCountdown() {
+    var now = Date.now();
+    var diff = MINT_OPEN_MS - now;
+    var label = document.getElementById("mint-cd-label");
+    if (diff <= 0) {
+      if (label) label.textContent = "Mint is live";
+      diff = 0;
+    }
+    var totalSec = Math.floor(diff / 1000);
+    var vals = {
+      d: pad(Math.floor(totalSec / 86400)),
+      h: pad(Math.floor((totalSec % 86400) / 3600)),
+      m: pad(Math.floor((totalSec % 3600) / 60)),
+      s: pad(totalSec % 60)
+    };
+    var els = document.querySelectorAll("[data-mint-cd]");
+    for (var i = 0; i < els.length; i++) {
+      var k = els[i].getAttribute("data-mint-cd");
+      if (vals[k] !== undefined) els[i].textContent = vals[k];
+    }
+  }
+
+  tickMintCountdown();
+  setInterval(tickMintCountdown, 1000);
+
   /* ---------- hash router ---------- */
   var ROUTES = {
     home:  { tab: "home",  title: "MNEME — gaming & entertainment studio" },

@@ -52,6 +52,26 @@
         </div>
       </header>
 
+      <section class="section news-flash" aria-label="Latest news">
+        <div class="wrap wrap-narrow">
+          <p class="news-kicker"><span class="news-dot" aria-hidden="true"></span>News · Sep 25, 2026</p>
+          <h2 class="section-title">The relic mint opens October&nbsp;3.</h2>
+          <p class="lede">3,333 MEGAMUSE relic cards. Blind mint — 0.01&nbsp;ETH each, 5 per wallet, first-come first-served. Every relic is a ticket to the weekly draw, and a weight boost when it counts.</p>
+          <div class="countdown" aria-label="Countdown to the mint">
+            <p class="countdown-label" id="mint-cd-label">Mint opens in</p>
+            <div class="countdown-chips">
+              <div class="chip"><span data-mint-cd="d">--</span><small>days</small></div>
+              <div class="chip"><span data-mint-cd="h">--</span><small>hrs</small></div>
+              <div class="chip"><span data-mint-cd="m">--</span><small>min</small></div>
+              <div class="chip"><span data-mint-cd="s">--</span><small>sec</small></div>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-gold" href="#/mint">See the relics</a>
+          </div>
+        </div>
+      </section>
+
       <section class="section section-alt">
         <div class="wrap wrap-narrow">
           <p class="section-kicker">Proof</p>
@@ -165,6 +185,102 @@
           <p class="section-kicker">The offering</p>
           <h2 class="section-title">MEGAMUSE</h2>
           <p class="lede">MNEME's first offering is a weekly prize draw that runs on-chain. No trust required — the randomness is public, the money is on-chain, the rules are code.</p>
+
+          <!-- ============ DRAW DASHBOARD ============ -->
+          <div class="dash" id="dash">
+            <div class="dash-head">
+              <div>
+                <p class="section-kicker">Live game state</p>
+                <h3 class="dash-title">Draw dashboard</h3>
+              </div>
+              <span class="dash-badge" id="dash-badge">Setting up</span>
+            </div>
+
+            <div class="dash-grid">
+              <div class="dash-stat">
+                <p class="dash-label">The pot</p>
+                <p class="dash-big"><span id="dash-pot">—</span> <span class="dash-unit">musebook</span></p>
+                <div class="potbar" id="dash-potbar" aria-hidden="true">
+                  <div class="potbar-free" id="dash-potbar-free" style="width:100%"></div>
+                </div>
+                <p class="dash-sub" id="dash-potnote">Winner takes the entire free pot.</p>
+              </div>
+              <div class="dash-stat">
+                <p class="dash-label">Next draw</p>
+                <p class="dash-big" id="dash-countdown">—</p>
+                <p class="dash-sub">every Sunday · 20:00 UTC · <span id="dash-epoch">epoch —</span></p>
+                <p class="dash-sub" id="dash-drawnote">Draws go live after the mint.</p>
+              </div>
+            </div>
+
+            <div class="dash-panel">
+              <div class="dash-panel-head">
+                <h4>Your position</h4>
+                <button class="btn btn-gold btn-sm" id="dash-connect">Connect wallet</button>
+              </div>
+              <div id="dash-user-empty">
+                <p class="dash-sub">Connect your wallet to see your entries, weight and odds.</p>
+              </div>
+              <div id="dash-user" hidden>
+                <div class="dash-grid dash-grid-4">
+                  <div class="dash-mini">
+                    <p class="dash-label">Entries</p>
+                    <p class="dash-num" id="dash-entries">—</p>
+                  </div>
+                  <div class="dash-mini">
+                    <p class="dash-label">Your weight</p>
+                    <p class="dash-num" id="dash-weight">—</p>
+                  </div>
+                  <div class="dash-mini">
+                    <p class="dash-label">Streak</p>
+                    <p class="dash-num" id="dash-streak">—</p>
+                  </div>
+                  <div class="dash-mini dash-mini-hi">
+                    <p class="dash-label">Your odds</p>
+                    <p class="dash-num" id="dash-odds">—</p>
+                    <p class="dash-sub" id="dash-odds-sub"></p>
+                  </div>
+                </div>
+                <p class="dash-sub" id="dash-weight-note"></p>
+                <div class="dash-actions">
+                  <div class="buy-row">
+                    <button class="btn btn-ghost btn-sm" id="dash-qty-minus" aria-label="Fewer offerings">−</button>
+                    <span class="buy-qty" id="dash-qty">1</span>
+                    <button class="btn btn-ghost btn-sm" id="dash-qty-plus" aria-label="More offerings">+</button>
+                    <button class="btn btn-gold" id="dash-buy">Buy offerings</button>
+                    <button class="btn btn-ghost" id="dash-free">Free entry</button>
+                  </div>
+                  <p class="dash-sub">≈ $1 per offering · <span id="dash-price">—</span> MNEME each</p>
+                  <p class="dash-status" id="dash-buy-status" role="status"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel">
+              <div class="dash-panel-head">
+                <h4>Your relics <span class="dash-count" id="dash-relic-count"></span></h4>
+              </div>
+              <div id="dash-relics-empty">
+                <p class="dash-sub">No relics in this wallet yet — the mint opens October 3. Each relic adds weekly weight while it's pledged.</p>
+              </div>
+              <div class="relic-grid" id="dash-relics" hidden></div>
+              <p class="dash-sub">Pledged relics enter every draw automatically. Rest one before the Sunday snapshot to sit a week out. If your relic wins, it's redeemed — retired forever, on-chain.</p>
+            </div>
+
+            <div class="dash-panel">
+              <div class="dash-panel-head">
+                <h4>Payouts</h4>
+              </div>
+              <p class="dash-sub">The winner takes <strong>100% of the free pot</strong>, paid in musebook. Winners claim on-chain within 7 days — unclaimed prizes roll straight into next week's pot. Nothing is ever kept by the studio.</p>
+              <div id="dash-claim-zone" hidden>
+                <p class="dash-win" id="dash-win-msg"></p>
+                <button class="btn btn-gold" id="dash-claim">Claim prize</button>
+                <p class="dash-status" id="dash-claim-status" role="status"></p>
+              </div>
+            </div>
+          </div>
+          <!-- ============ /DRAW DASHBOARD ============ -->
+
           <div class="cards">
             <div class="card">
               <p class="card-step">i.</p>
@@ -373,6 +489,7 @@
 
   <script src="./config.js"></script>
   <script src="./app.js"></script>
+  <script src="./dashboard.js"></script>
   <script type="module" src="./mint.js"></script>
   <script type="module" src="./trade.js"></script>
 </body>
