@@ -688,3 +688,31 @@ button.btn-ghost { background: transparent; }
   .dash-big { font-size: 24px; }
   .relic-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }
+
+/* ---------- wallet help modal ---------- */
+.mw-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(5, 2, 12, 0.78);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.mw-card {
+  position: relative; width: 100%; max-width: 380px;
+  background: var(--panel); border: 1px solid rgba(245, 179, 1, 0.4);
+  border-radius: 12px; padding: 30px 24px 24px; text-align: center;
+}
+.mw-close {
+  position: absolute; top: 10px; right: 14px;
+  background: none; border: none; color: var(--ink-dim);
+  font-size: 16px; cursor: pointer; font-family: var(--body);
+}
+.mw-close:hover { color: var(--gold-soft); }
+.mw-title {
+  font-family: var(--display); color: var(--gold);
+  font-size: 14px; margin: 0 0 14px;
+}
+.mw-text { color: var(--ink); font-size: 14px; margin: 0 0 16px; line-height: 1.5; }
+.mw-btn { display: block; width: 100%; margin: 0 0 10px; box-sizing: border-box; }
+button.mw-btn { border: none; cursor: pointer; }
+button.mw-btn.btn-ghost { border: 2px solid var(--gold); background: transparent; }
+.mw-hint { color: var(--ink-dim); font-size: 12px; margin: 12px 0 0; line-height: 1.5; }

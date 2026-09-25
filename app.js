@@ -242,11 +242,8 @@
 
     function connect() {
       if (!window.ethereum) {
-        if (btn) {
-          btn.textContent = "No wallet found";
-          setTimeout(renderBtn, 2200);
-        }
-        return Promise.reject(new Error("no ethereum provider"));
+        showWalletModal();
+        return Promise.resolve(null);
       }
       if (btn) btn.textContent = "Connecting…";
       return window.ethereum.request({ method: "eth_requestAccounts" }).then(function (accounts) {
@@ -284,7 +281,62 @@
     return {
       get account() { return account; },
       connect: connect,
-      disconnect: disconnect
+      disconnect: disconnect,
+      showWalletHelp: showWalletModal
     };
   })();
+
+  /* ---------- wallet help modal (no injected provider) ----------
+     Phones don't inject window.ethereum into regular browsers, so "Connect"
+     would otherwise die silently. On mobile we deep-link into wallet apps'
+     in-app browsers (where ethereum IS injected); on desktop we point at
+     an installer. */
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+  }
+
+  function showWalletModal() {
+    if (document.getElementById("mneme-wallet-modal")) return;
+    var mobile = isMobile();
+    var url = window.location.href;
+    // MetaMask deep link takes host+path, no protocol: metamask.app.link/dapp/<host><path>
+    var dapp = window.location.host + window.location.pathname + window.location.hash;
+    var mmHref = "https://metamask.app.link/dapp/" + dapp;
+    var cbHref = "https://go.cb-w.com/dapp?cb_url=" + encodeURIComponent(url);
+
+    var bodyHtml;
+    if (mobile) {
+      bodyHtml =
+        '<p class="mw-text">Phones don\'t put a wallet in the browser — open this page inside your wallet\'s app instead:</p>' +
+        '<a class="btn btn-gold mw-btn" href="' + mmHref + '">Open in MetaMask</a>' +
+        '<a class="btn btn-ghost mw-btn" href="' + cbHref + '">Open in Coinbase Wallet</a>' +
+        '<button type="button" class="btn btn-ghost mw-btn" data-mw="copy">Copy link</button>' +
+        '<p class="mw-hint">Once it opens in your wallet, tap Connect Wallet again.</p>';
+    } else {
+      bodyHtml =
+        '<p class="mw-text">No wallet detected in this browser.</p>' +
+        '<a class="btn btn-gold mw-btn" href="https://metamask.io/download/" target="_blank" rel="noopener">Install MetaMask</a>' +
+        '<p class="mw-hint">Then refresh and tap Connect Wallet.</p>';
+    }
+
+    var overlay = document.createElement("div");
+    overlay.id = "mneme-wallet-modal";
+    overlay.className = "mw-overlay";
+    overlay.innerHTML =
+      '<div class="mw-card" role="dialog" aria-modal="true" aria-label="Connect wallet">' +
+      '<button type="button" class="mw-close" aria-label="Close">✕</button>' +
+      '<h3 class="mw-title">Connect wallet</h3>' + bodyHtml + '</div>';
+
+    function close() { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+    overlay.querySelector(".mw-close").addEventListener("click", close);
+    var copyBtn = overlay.querySelector('[data-mw="copy"]');
+    if (copyBtn) copyBtn.addEventListener("click", function () {
+      function done() { copyBtn.textContent = "Copied!"; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, done);
+      } else { done(); }
+    });
+    document.body.appendChild(overlay);
+  }
 })();

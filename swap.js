@@ -125,11 +125,16 @@
   }
 
   async function init() {
+    // No injected provider (e.g. a phone's regular browser): offer the
+    // wallet-help flow immediately instead of waiting on the viem download.
+    els.primary.addEventListener("click", onPrimary);
+    if (!window.ethereum) setPrimary("Connect wallet", {});
     try {
       V = await import(VIEM_URL);
     } catch (e) {
       setStatus("Couldn't load the swap engine (network hiccup) — the Dexscreener link below still works.", "err");
-      setPrimary("Swap", { hidden: true });
+      if (window.ethereum) setPrimary("Swap", { hidden: true });
+      // without a provider the Connect wallet button stays put
       return;
     }
     publicClient = V.createPublicClient({
@@ -156,7 +161,6 @@
         scheduleQuote();
       }
     });
-    els.primary.addEventListener("click", onPrimary);
     window.addEventListener("mneme:account", function (ev) {
       account = (ev.detail && ev.detail.account) || null;
       lastQuote = null;
@@ -165,8 +169,8 @@
 
     account = (window.MnemeWallet && window.MnemeWallet.account) || null;
     if (!window.ethereum) {
-      setStatus("No wallet detected — open this page in a wallet browser (or install one) to trade.", "err");
-      setPrimary("No wallet", { disabled: true });
+      setStatus("No wallet detected — tap Connect wallet and follow the steps.", "err");
+      setPrimary("Connect wallet", {});
       return;
     }
     refreshBalances().then(updateActionState);
@@ -261,7 +265,7 @@
 
   async function updateActionState() {
     if (busy) return;
-    if (!window.ethereum) { setPrimary("No wallet", { disabled: true }); return; }
+    if (!window.ethereum) { setPrimary("Connect wallet", {}); return; }
     if (!account) {
       setStatus("Connect your wallet to trade.", "");
       setPrimary("Connect wallet", {});
