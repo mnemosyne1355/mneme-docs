@@ -1,5 +1,5 @@
 /* MNEME studio site — hash-routed tabs + countdown to the next Sunday 20:00 UTC draw.
-   Routes: #/ (Home), #/mint (Mint), #/play (Play), #/docs (Docs), #/trade (Trade).
+   Routes: #/ (Home), #/mint (Mint), #/play (Play), #/trade (Trade), #/docs (Docs).
    First draw target: 2026-10-11T20:00:00Z; afterwards rolls weekly. */
 (function () {
   "use strict";
@@ -73,6 +73,71 @@
 
   tickMintCountdown();
   setInterval(tickMintCountdown, 1000);
+
+  /* ---------- token section: copy button + live dexscreener stats ---------- */
+  (function tokenSection() {
+    var cfg = window.MNEME_CONFIG || {};
+    var copyBtn = document.getElementById("addr-copy");
+    var addrEl = document.getElementById("token-addr");
+    if (copyBtn && addrEl) {
+      copyBtn.addEventListener("click", function () {
+        var addr = addrEl.textContent.trim();
+        function done() {
+          copyBtn.textContent = "copied";
+          setTimeout(function () { copyBtn.textContent = "copy"; }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr).then(done, done);
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = addr;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(ta);
+          done();
+        }
+      });
+    }
+
+    var token = cfg.MNEME_TOKEN_ADDRESS;
+    if (!token || !cfg.isLive || !cfg.isLive(token)) return;
+    var elPrice = document.getElementById("stat-price");
+    var elLiq = document.getElementById("stat-liq");
+    var elVol = document.getElementById("stat-vol");
+    if (!elPrice || !elLiq || !elVol) return;
+
+    function fmtUsd(v) {
+      if (v === null || v === undefined || isNaN(v)) return "–";
+      if (v >= 1e6) return "$" + (v / 1e6).toFixed(2) + "M";
+      if (v >= 1e3) return "$" + (v / 1e3).toFixed(1) + "K";
+      return "$" + Number(v).toFixed(2);
+    }
+    function fmtPrice(v) {
+      if (v === null || v === undefined || isNaN(v)) return "–";
+      v = Number(v);
+      if (v === 0) return "$0";
+      if (v >= 0.01) return "$" + v.toFixed(4);
+      // small prices: show first 3 significant digits
+      var s = v.toPrecision(3);
+      return "$" + s;
+    }
+
+    function refresh() {
+      fetch("https://api.dexscreener.com/token-pairs/v1/robinhood/" + token)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (pairs) {
+          if (!pairs || !pairs.length) return;
+          var p = pairs[0];
+          elPrice.textContent = fmtPrice(p.priceUsd);
+          elLiq.textContent = fmtUsd(p.liquidity && p.liquidity.usd);
+          elVol.textContent = fmtUsd(p.volume && p.volume.h24);
+        })
+        .catch(function () { /* leave placeholders on failure */ });
+    }
+    refresh();
+    setInterval(refresh, 60000);
+  })();
 
   /* ---------- hash router ---------- */
   var ROUTES = {
